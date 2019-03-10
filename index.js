@@ -28,6 +28,13 @@
 
     page.content = fs.read(system.args[1]);
 
+
     var output = system.args[2];
-        page.render(output, {format: 'pdf'});
-        phantom.exit(0);
+
+    page.evaluate(function() {
+        context = document.getElementById('download');
+    })
+    console.log(page);
+
+    page.render(output, {format: 'pdf'});
+    phantom.exit(0);
